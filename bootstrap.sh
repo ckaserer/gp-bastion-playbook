@@ -14,7 +14,7 @@ if [ "$UNAME" == "linux" ]; then
         export DISTRO=$(lsb_release -i | cut -d: -f2 | sed s/'^\t'//)
     else
         export DISTRO=$(ls -d /etc/[A-Za-z]*[_-][rv]e[lr]* | grep -v "lsb" | cut -d'/' -f3 | cut -d'-' -f1 | cut -d'_' -f1)
-    fi:q
+    fi
 fi
 unset UNAME
 if [ "$DISTRO" != "Ubuntu" ]; then

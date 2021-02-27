@@ -23,13 +23,19 @@
 
   tasks:
 
-    - name: Install required packages
-      apt:
-        name: 
-          - git
-          - python3
-          - python3-pip
-          - helm
+    - name: Include grog.package
+      include_role:
+        name: grog.package
+      vars:
+        package_list:
+          - name: dhcping
+          - name: git
+          - name: helm
+          - name: htop
+          - name: nano
+          - name: net-tools
+          - name: vim
+          - name: wget
 
     - name: Download oc client
       get_url: 
@@ -48,6 +54,21 @@
         dest: /usr/local/bin/oc
         mode: "0777"
         remote_src: yes
+
+ # add users
+ # add ssh keys from github
+ 
+    - name: Include grog.sudo
+      include_role:
+        name: grog.sudo
+      vars:
+        sudo_list:
+          - name: ckaserer
+            sudo:
+              hosts: ALL
+              as: ALL:ALL
+              nopasswd: yes
+              commands: ALL
 
     - name: Include ckaserer.gitlab_runner
       include_role:

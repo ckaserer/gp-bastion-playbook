@@ -1,6 +1,8 @@
 ---
 roles:
   - name: ckaserer.gitlab_runner
+  - name: grog.sudo
+  - name: grog.package
 
 collections: []
 ...
