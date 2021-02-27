@@ -1,5 +1,5 @@
 ---
-- hosts: gp_bastion
+- hosts: bastion
   become: true
 
   vars_files:
